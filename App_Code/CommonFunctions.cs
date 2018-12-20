@@ -13,7 +13,6 @@ using System.Text;
 using System.IO;
 
 
-
 namespace DBComponent
 {
     public class CommonFunctions

@@ -4733,7 +4733,6 @@ namespace DBComponent
                 DataSet ds = new DataSet();
                 DataTable dt = new DataTable();
                 DataTable dt1 = new DataTable();
-
                 string CaretWeight = string.Empty;
                 string LooseDiamondID = string.Empty;
 

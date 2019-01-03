@@ -5263,7 +5263,7 @@ public class Service : System.Web.Services.WebService
     public void MailSend(string OrderId)
     {
         string MailStatus = SendMail(Convert.ToInt32(OrderId));
-       // objComFun.SendTOQuickBase(OrderId);       
+        objComFun.SendTOQuickBase(OrderId);       
         DataTable dtStatus = new DataTable();
         dtStatus.Columns.Add("Status");
         DataRow _dataRows = dtStatus.NewRow();
@@ -5316,7 +5316,7 @@ public class Service : System.Web.Services.WebService
                     //smtpClient.Port = 25;
 
                     smtpClient.Host = "smtpout.secureserver.net";
-                    smtpClient.Credentials = new System.Net.NetworkCredential("service@anjolee.com", "rinrin77#12");
+                    smtpClient.Credentials = new System.Net.NetworkCredential("service@anjolee.com", "rinriN77#1$2");
 
                     smtpClient.Send(objMail);
 

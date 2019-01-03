@@ -4908,7 +4908,7 @@ namespace DBComponent
                     OrderPlatform = DsWebName.Tables[0].Rows[0][1].ToString();
                 }
 
-
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 for (int QB = 0; QB < Convert.ToInt32(FinalTable.Rows.Count); QB++)
                 {
 

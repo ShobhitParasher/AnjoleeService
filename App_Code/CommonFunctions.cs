@@ -4908,7 +4908,6 @@ namespace DBComponent
                 }
 
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
                 for (int QB = 0; QB < Convert.ToInt32(FinalTable.Rows.Count); QB++)
                 {
 
@@ -5890,6 +5889,35 @@ namespace DBComponent
                     return dsTH;
                 }
             }
+        }
+
+
+        public DataTable GetWeddingBandCollection(string ProductName, string Flag , int  type)
+        {
+            SqlConnection con = GetConnection();
+            System.Data.DataTable dt = new DataTable();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "usp_Product_Band_Detail";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@ProductName", ProductName));
+                cmd.Parameters.Add(new SqlParameter("@Flag", Flag));
+                cmd.Parameters.Add(new SqlParameter("@Type", type));
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
         }
     }
    

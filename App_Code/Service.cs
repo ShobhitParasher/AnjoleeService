@@ -528,6 +528,38 @@ public class Service : System.Web.Services.WebService
         }
 
     }
+    [WebMethod(Description = "Wedding Band Product")]
+    public void GetWeddingbandcollection(string ProductName,string Flag)
+    {
+        DataTable dtWBandCollection = new DataTable();
+        int WType = 0;
+
+        if(Flag=="1" )
+        {
+            WType = 2;
+        }
+        else if (Flag == "2")
+        {
+            WType = 1;
+        }
+        else
+        {
+            WType = 3;
+        }
+        dtWBandCollection = objComFun.GetWeddingBandCollection(ProductName, Flag,WType);
+        if (dtWBandCollection.Rows.Count != 0)
+        {
+            Context.Response.Clear();
+            Context.Response.ContentType = "application/json";
+            Context.Response.Write(DataTableToJSONWithJavaScriptSerializer(dtWBandCollection));
+        }
+        else
+        {
+            Context.Response.Write("False");
+        }
+
+    }
+
 
 
     [WebMethod(Description = "Get Wedding Band Detail ")]
@@ -4595,7 +4627,7 @@ public class Service : System.Web.Services.WebService
     private string ProcessTransaction()
     {
 
-        //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         string result = readHtmlPage("https://secure2.authorize.net/gateway/transact.dll");
         return result;
 
